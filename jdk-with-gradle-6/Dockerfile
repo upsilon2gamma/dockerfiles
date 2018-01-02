@@ -1,9 +1,11 @@
 from openjdk:6
 
-RUN cd /root/ && wget "https://services.gradle.org/distributions/gradle-2.14.1-bin.zip" && unzip gradle-2.14.1-bin.zip -d /opt/ && rm gradle-2.14.1-bin.zip
+ENV GRADLE_VER=2.14.1
+ENV GRADLE_BIN_ZIP="gradle-${GRADLE_VER}-bin.zip"
+RUN cd /root/ && wget https://services.gradle.org/distributions/${GRADLE_BIN_ZIP} && unzip ${GRADLE_BIN_ZIP} -d /opt/ && rm ${GRADLE_BIN_ZIP}
 
 VOLUME ["/src", "/root/.gradle"]
 
 WORKDIR "/src"
 
-ENTRYPOINT ["/opt/gradle-2.14.1/bin/gradle"]
+ENTRYPOINT ["/opt/gradle-${GRADLE_VER}/bin/gradle"]
