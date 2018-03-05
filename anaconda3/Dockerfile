@@ -4,9 +4,10 @@ ENV UPDATED_AT=1508515909
 
 VOLUME ["/opt/notebooks"]
 
+RUN /opt/conda/bin/conda update conda -y
+RUN /opt/conda/bin/conda update anaconda -y
 RUN /opt/conda/bin/conda install jupyter -y
 RUN /opt/conda/bin/conda install -c anaconda opencv -y
-RUN /opt/conda/bin/conda update --prefix /opt/conda anaconda -y
 
 RUN useradd -ms /bin/bash anaconda
 USER anaconda
