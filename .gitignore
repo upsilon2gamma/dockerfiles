@@ -1,1 +1,3 @@
 *.tar.gz
+
+anaconda3/jupyter_notebook_config.json
